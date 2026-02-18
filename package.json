@@ -1,0 +1,90 @@
+{
+    "name":  "arduino-co-pilot",
+    "displayName":  "Arduino Co-Pilot",
+    "description":  "An AI assistant for Arduino with code generation and connection instructions.",
+    "version":  "0.2.6",
+    "publisher":  "arduino-copilot",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sandeepmk2006/arduino-co-pilot"
+    },
+    "engines":  {
+                    "vscode":  "^1.85.0"
+                },
+    "categories":  [
+                       "Other"
+                   ],
+    "activationEvents":  [
+                             "onView:arduino-co-pilot-view",
+                             "onCommand:arduino-co-pilot.show"
+                         ],
+    "main":  "./extension.js",
+    "contributes":  {
+                        "viewsContainers":  {
+                                                "activitybar":  [
+                                                                    {
+                                                                        "id":  "arduino-co-pilot-container",
+                                                                        "title":  "Arduino Co-Pilot",
+                                                                        "icon":  "media/arduino-icon.svg"
+                                                                    }
+                                                                ]
+                                            },
+                        "views":  {
+                                      "arduino-co-pilot-container":  [
+                                                                         {
+                                                                             "id":  "arduino-co-pilot-view",
+                                                                             "name":  "AI Assistant",
+                                                                             "type":  "webview"
+                                                                         }
+                                                                     ]
+                                  },
+                        "commands":  [
+                                         {
+                                             "command":  "arduino-co-pilot.show",
+                                             "title":  "Show Arduino Co-Pilot",
+                                             "icon":  "$(robot)"
+                                         },
+                                         {
+                                             "command":  "arduino-co-pilot.runSetup",
+                                             "title":  "Arduino Co-Pilot: Run Setup",
+                                             "icon":  "$(gear)"
+                                         }
+                                     ],
+                        "configuration":  {
+                                              "type":  "object",
+                                              "title":  "Arduino Co-Pilot Configuration",
+                                              "properties":  {
+                                                                 "arduino-co-pilot.pythonPath":  {
+                                                                                                     "type":  "string",
+                                                                                                     "default":  "",
+                                                                                                     "description":  "Custom Python executable path (leave empty to auto-detect)"
+                                                                                                 },
+                                                                 "arduino-co-pilot.modelPath":  {
+                                                                                                    "type":  "string",
+                                                                                                    "default":  "",
+                                                                                                    "description":  "Path to Phi-3-mini-4k-instruct.Q4_0.gguf model file"
+                                                                                                },
+                                                                 "arduinoCoPilot.apiKey":  {
+                                                                                               "type":  "string",
+                                                                                               "default":  "",
+                                                                                               "description":  "API Key for Arduino Co-Pilot"
+                                                                                           }
+                                                             }
+                                          }
+                    },
+    "scripts":  {
+                    "lint":  "eslint .",
+                    "pretest":  "npm run lint",
+                    "test":  "node ./test/runTest.js"
+                },
+    "devDependencies":  {
+                            "@types/vscode":  "^1.85.0",
+                            "@types/mocha":  "^10.0.6",
+                            "@types/node":  "18.x",
+                            "eslint":  "^8.56.0",
+                            "glob":  "^10.3.10",
+                            "mocha":  "^10.2.0",
+                            "typescript":  "^5.3.3",
+                            "@vscode/test-electron":  "^2.3.8"
+                        }
+}

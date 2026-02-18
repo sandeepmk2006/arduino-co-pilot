@@ -1,0 +1,30 @@
+# Model file (too large for GitHub — download separately)
+*.gguf
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Node
+node_modules/
+package-lock.json
+
+# VS Code extension build artifacts
+*.vsix
+
+# VS Code workspace settings
+.vscode/
+.vscode-test.mjs
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test artifacts
+test-results/

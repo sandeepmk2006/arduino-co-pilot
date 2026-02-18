@@ -1,0 +1,292 @@
+[
+  {
+    "title": "pinMode()",
+    "category": "Digital I/O",
+    "content": "pinMode(pin, mode) - Configures the specified pin to behave either as an input or an output. mode: INPUT, OUTPUT, or INPUT_PULLUP. Example: pinMode(13, OUTPUT); sets pin 13 as output."
+  },
+  {
+    "title": "digitalWrite()",
+    "category": "Digital I/O",
+    "content": "digitalWrite(pin, value) - Write HIGH or LOW to a digital pin. If the pin is configured as OUTPUT, sets voltage to 5V (HIGH) or 0V (LOW). Example: digitalWrite(13, HIGH); turns on LED on pin 13."
+  },
+  {
+    "title": "digitalRead()",
+    "category": "Digital I/O",
+    "content": "digitalRead(pin) - Reads the value from a specified digital pin, either HIGH or LOW. Returns int. Example: int val = digitalRead(2); reads pin 2 state."
+  },
+  {
+    "title": "analogRead()",
+    "category": "Analog I/O",
+    "content": "analogRead(pin) - Reads the value from the specified analog pin. Returns int 0-1023 (10-bit ADC). Arduino Uno analog pins: A0-A5. Takes about 100 microseconds. Example: int sensorValue = analogRead(A0);"
+  },
+  {
+    "title": "analogWrite()",
+    "category": "Analog I/O",
+    "content": "analogWrite(pin, value) - Writes an analog value (PWM wave) to a pin. value: 0-255 duty cycle. PWM pins on Uno: 3, 5, 6, 9, 10, 11. Frequency: ~490 Hz (pins 5,6: ~980 Hz). Example: analogWrite(9, 128); // 50% duty cycle."
+  },
+  {
+    "title": "analogReference()",
+    "category": "Analog I/O",
+    "content": "analogReference(type) - Configures the reference voltage for analog input. Types: DEFAULT (5V on Uno), INTERNAL (1.1V on Uno), EXTERNAL (voltage on AREF pin). Example: analogReference(INTERNAL);"
+  },
+  {
+    "title": "millis()",
+    "category": "Time",
+    "content": "millis() - Returns the number of milliseconds since the Arduino began running. Returns unsigned long. Overflows after ~50 days. Use for non-blocking delays. Example: unsigned long currentTime = millis();"
+  },
+  {
+    "title": "micros()",
+    "category": "Time",
+    "content": "micros() - Returns microseconds since program started. Resolution of 4 microseconds on 16 MHz boards. Overflows after ~70 minutes. Example: unsigned long t = micros();"
+  },
+  {
+    "title": "delay()",
+    "category": "Time",
+    "content": "delay(ms) - Pauses the program for ms milliseconds. 1000 ms = 1 second. Blocking function - no other code runs during delay. Example: delay(1000); // wait 1 second."
+  },
+  {
+    "title": "delayMicroseconds()",
+    "category": "Time",
+    "content": "delayMicroseconds(us) - Pauses program for us microseconds. Accurate for values 3 and above. Max recommended: 16383. Example: delayMicroseconds(100);"
+  },
+  {
+    "title": "Serial.begin()",
+    "category": "Serial",
+    "content": "Serial.begin(speed) - Sets the data rate in bits per second (baud). Common rates: 9600, 115200. Must be called in setup(). Example: Serial.begin(9600);"
+  },
+  {
+    "title": "Serial.print()",
+    "category": "Serial",
+    "content": "Serial.print(val) - Prints data to the serial port as human-readable ASCII text. Can print strings, ints, floats. Serial.println() adds newline. Example: Serial.println(\"Hello\");"
+  },
+  {
+    "title": "Serial.read()",
+    "category": "Serial",
+    "content": "Serial.read() - Reads incoming serial data. Returns first byte of incoming serial data or -1 if none. Use Serial.available() to check first. Example: if(Serial.available()) { char c = Serial.read(); }"
+  },
+  {
+    "title": "Serial.available()",
+    "category": "Serial",
+    "content": "Serial.available() - Returns the number of bytes available for reading from the serial port. Returns int. Example: if (Serial.available() > 0) { int inByte = Serial.read(); }"
+  },
+  {
+    "title": "map()",
+    "category": "Math",
+    "content": "map(value, fromLow, fromHigh, toLow, toHigh) - Re-maps a number from one range to another. Does not constrain values. Example: int val = map(analogRead(A0), 0, 1023, 0, 255);"
+  },
+  {
+    "title": "constrain()",
+    "category": "Math",
+    "content": "constrain(x, a, b) - Constrains a number to be within a range. Returns x if between a and b, a if x < a, b if x > b. Example: int val = constrain(sensorValue, 0, 255);"
+  },
+  {
+    "title": "min() / max()",
+    "category": "Math",
+    "content": "min(x, y) - Returns the smaller of two numbers. max(x, y) - Returns the larger. Avoid using with side-effect expressions. Example: int smallest = min(a, b);"
+  },
+  {
+    "title": "abs()",
+    "category": "Math",
+    "content": "abs(x) - Computes the absolute value. Avoid using with side-effect expressions due to macro implementation. Example: int distance = abs(target - current);"
+  },
+  {
+    "title": "pow()",
+    "category": "Math",
+    "content": "pow(base, exponent) - Calculates the value of a number raised to a power. Returns double. Example: double val = pow(2, 8); // 256"
+  },
+  {
+    "title": "sqrt()",
+    "category": "Math",
+    "content": "sqrt(x) - Calculates the square root. Returns double. Example: double root = sqrt(144); // 12"
+  },
+  {
+    "title": "random()",
+    "category": "Math",
+    "content": "random(max) or random(min, max) - Generates pseudo-random numbers. Use randomSeed() for true randomness. Example: long r = random(0, 100);"
+  },
+  {
+    "title": "attachInterrupt()",
+    "category": "Interrupts",
+    "content": "attachInterrupt(digitalPinToInterrupt(pin), ISR, mode) - Sets a function (ISR) to call when an external interrupt occurs. Modes: LOW, CHANGE, RISING, FALLING. Uno interrupt pins: 2, 3. ISR should be short, no delay(), no Serial. Use volatile for shared variables. Example: attachInterrupt(digitalPinToInterrupt(2), myISR, RISING);"
+  },
+  {
+    "title": "detachInterrupt()",
+    "category": "Interrupts",
+    "content": "detachInterrupt(digitalPinToInterrupt(pin)) - Turns off the interrupt on the specified pin. Example: detachInterrupt(digitalPinToInterrupt(2));"
+  },
+  {
+    "title": "interrupts() / noInterrupts()",
+    "category": "Interrupts",
+    "content": "interrupts() - Re-enables interrupts after noInterrupts() disabled them. noInterrupts() - Disables interrupts. Use in critical sections. Example: noInterrupts(); criticalCode(); interrupts();"
+  },
+  {
+    "title": "Wire (I2C)",
+    "category": "Communication",
+    "content": "#include <Wire.h> - I2C communication library. Wire.begin() starts as master, Wire.begin(address) as slave. Wire.beginTransmission(address), Wire.write(data), Wire.endTransmission(). Wire.requestFrom(address, count), Wire.read(). SDA: A4, SCL: A5 on Uno. Example: Wire.begin(); Wire.beginTransmission(0x27); Wire.write(value); Wire.endTransmission();"
+  },
+  {
+    "title": "SPI",
+    "category": "Communication",
+    "content": "#include <SPI.h> - SPI communication library. Pins on Uno: MOSI=11, MISO=12, SCK=13, SS=10. SPI.begin(), SPI.transfer(val). Use digitalWrite(SS, LOW) to select device. Example: SPI.begin(); digitalWrite(SS, LOW); SPI.transfer(0x42); digitalWrite(SS, HIGH);"
+  },
+  {
+    "title": "SoftwareSerial",
+    "category": "Communication",
+    "content": "#include <SoftwareSerial.h> - Allows serial on other digital pins. SoftwareSerial mySerial(rxPin, txPin). Not all pins support RX. Max one instance active at a time. Example: SoftwareSerial bt(10, 11); bt.begin(9600);"
+  },
+  {
+    "title": "Servo Library",
+    "category": "Libraries",
+    "content": "#include <Servo.h> - Controls servo motors. Servo myservo; myservo.attach(pin). myservo.write(angle) for 0-180 degrees. myservo.writeMicroseconds(us) for precise control (1000-2000us). Can use any digital pin. Max 12 servos on Uno. Disables PWM on pins 9,10. Example: Servo myservo; myservo.attach(9); myservo.write(90);"
+  },
+  {
+    "title": "LiquidCrystal",
+    "category": "Libraries",
+    "content": "#include <LiquidCrystal.h> - Controls LCD displays. LiquidCrystal lcd(rs, en, d4, d5, d6, d7). lcd.begin(cols, rows). lcd.print(). lcd.setCursor(col, row). lcd.clear(). Example: LiquidCrystal lcd(12, 11, 5, 4, 3, 2); lcd.begin(16, 2); lcd.print(\"Hello\");"
+  },
+  {
+    "title": "Stepper Library",
+    "category": "Libraries",
+    "content": "#include <Stepper.h> - Controls stepper motors. Stepper myStepper(stepsPerRev, pin1, pin2, pin3, pin4). myStepper.setSpeed(rpm). myStepper.step(steps). Example: Stepper motor(200, 8, 9, 10, 11); motor.setSpeed(60); motor.step(200);"
+  },
+  {
+    "title": "EEPROM",
+    "category": "Libraries",
+    "content": "#include <EEPROM.h> - Read/write to permanent storage. EEPROM.read(address), EEPROM.write(address, value), EEPROM.update(address, value). Uno: 1024 bytes. 100,000 write cycles. Example: EEPROM.write(0, 42); int val = EEPROM.read(0);"
+  },
+  {
+    "title": "WiFiNINA",
+    "category": "Libraries",
+    "content": "#include <WiFiNINA.h> - Wi-Fi for Arduino MKR, Nano 33 IoT. WiFi.begin(ssid, pass). WiFi.status(). WiFiClient/WiFiServer for TCP. WiFiSSLClient for HTTPS. Example: WiFi.begin(\"myNetwork\", \"myPassword\"); while(WiFi.status() != WL_CONNECTED) delay(500);"
+  },
+  {
+    "title": "ArduinoBLE",
+    "category": "Libraries",
+    "content": "#include <ArduinoBLE.h> - BLE for Nano 33 BLE, MKR WiFi 1010. BLE.begin(). BLEService/BLECharacteristic to define services. BLE.advertise(). Example: BLEService ledService(\"19B10000-...\"); BLEByteCharacteristic ledChar(\"19B10001-...\", BLERead | BLEWrite);"
+  },
+  {
+    "title": "Data Types",
+    "category": "Language",
+    "content": "Arduino data types: boolean (true/false, 1 byte), byte (0-255, 1 byte), char (-128 to 127, 1 byte), unsigned char, int (-32768 to 32767, 2 bytes on Uno), unsigned int (0 to 65535), long (4 bytes), unsigned long, float (4 bytes, 6-7 decimal digits), double (same as float on Uno), String (object), char[] (C-string)."
+  },
+  {
+    "title": "String Object",
+    "category": "Language",
+    "content": "String class for text manipulation. String str = \"Hello\"; str.length(); str.charAt(n); str.substring(from, to); str.indexOf(\"find\"); str.toUpperCase(); str.toInt(); str += \" World\"; str.equals(str2); Warning: dynamic memory allocation can cause heap fragmentation. Prefer char arrays for memory-constrained applications."
+  },
+  {
+    "title": "Control Structures",
+    "category": "Language",
+    "content": "if/else, for, while, do...while, switch/case, break, continue, return, goto. for(int i=0; i<10; i++) {...}. while(condition) {...}. switch(var) { case 1: ...; break; default: ...; }"
+  },
+  {
+    "title": "volatile keyword",
+    "category": "Advanced",
+    "content": "volatile - Tells compiler variable may change unexpectedly (in ISR). Always use for variables shared between ISR and main code. Example: volatile int encoderCount = 0;"
+  },
+  {
+    "title": "Low Power Sleep",
+    "category": "Advanced",
+    "content": "Power saving with sleep modes. #include <avr/sleep.h> #include <avr/power.h>. set_sleep_mode(SLEEP_MODE_PWR_DOWN); sleep_enable(); sleep_mode(); sleep_disable(); Use watchdog timer or external interrupt to wake. Reduces Uno from ~45mA to ~0.36uA."
+  },
+  {
+    "title": "Watchdog Timer",
+    "category": "Advanced",
+    "content": "#include <avr/wdt.h> - Hardware watchdog timer. wdt_enable(WDTO_2S) enables 2-second watchdog. Must call wdt_reset() within timeout or board resets. Useful for crash recovery. Values: WDTO_15MS to WDTO_8S."
+  },
+  {
+    "title": "Direct Port Manipulation",
+    "category": "Advanced",
+    "content": "Direct register access for fast I/O. DDRB (direction), PORTB (output), PINB (input). Uno: Port B = pins 8-13, Port D = pins 0-7, Port C = A0-A5. DDRB |= (1 << PB5); // pin 13 output. PORTB |= (1 << PB5); // pin 13 HIGH. ~62.5ns vs ~5us for digitalWrite."
+  },
+  {
+    "title": "Arduino Uno R3 Pinout",
+    "category": "Board Pinout",
+    "content": "Arduino Uno R3:\n- Microcontroller: ATmega328P, 16 MHz, 5V logic\n- Digital I/O Pins: 14 (D0-D13), of which 6 provide PWM output\n- PWM Pins: 3, 5, 6, 9, 10, 11 (marked with ~)\n- Analog Input Pins: 6 (A0-A5), 10-bit ADC (0-1023)\n- DC Current per I/O Pin: 20 mA (absolute max 40 mA)\n- Flash Memory: 32 KB (0.5 KB used by bootloader)\n- SRAM: 2 KB\n- EEPROM: 1 KB\n- I2C: SDA (A4), SCL (A5)\n- SPI: MOSI (11), MISO (12), SCK (13), SS (10)\n- Serial: TX (1), RX (0)\n- External Interrupts: Pin 2 (INT0), Pin 3 (INT1)\n- LED_BUILTIN: Pin 13\n- Operating Voltage: 5V, Input Voltage: 7-12V (limit 6-20V)\n- USB: Type-B for programming and serial communication"
+  },
+  {
+    "title": "Arduino Nano Pinout",
+    "category": "Board Pinout",
+    "content": "Arduino Nano:\n- Microcontroller: ATmega328P, 16 MHz, 5V logic\n- Digital I/O Pins: 14 (D0-D13), 6 PWM (3, 5, 6, 9, 10, 11)\n- Analog Input Pins: 8 (A0-A7), 10-bit ADC\n- Flash: 32 KB, SRAM: 2 KB, EEPROM: 1 KB\n- Form factor: Mini-B USB, breadboard-friendly\n- Same pinout as Uno but smaller form factor\n- Extra analog pins: A6, A7 (analog input only, no digital)\n- I2C: SDA (A4), SCL (A5), SPI: same as Uno"
+  },
+  {
+    "title": "Arduino Mega 2560 Pinout",
+    "category": "Board Pinout",
+    "content": "Arduino Mega 2560:\n- Microcontroller: ATmega2560, 16 MHz, 5V logic\n- Digital I/O Pins: 54 (D0-D53), of which 15 provide PWM\n- PWM Pins: 2-13, 44-46\n- Analog Input Pins: 16 (A0-A15), 10-bit ADC\n- Flash: 256 KB, SRAM: 8 KB, EEPROM: 4 KB\n- Serial Ports: 4 (Serial, Serial1, Serial2, Serial3)\n- I2C: SDA (20), SCL (21)\n- SPI: MOSI (51), MISO (50), SCK (52), SS (53)\n- External Interrupts: 2, 3, 18, 19, 20, 21\n- DC Current per Pin: 20 mA"
+  },
+  {
+    "title": "Arduino Nano 33 IoT Pinout",
+    "category": "Board Pinout",
+    "content": "Arduino Nano 33 IoT:\n- Microcontroller: SAMD21 Cortex-M0+ 48MHz, 3.3V logic\n- Connectivity: Wi-Fi (u-blox NINA-W102), Bluetooth 4.2/BLE\n- IMU: LSM6DS3 (accelerometer + gyroscope)\n- Digital I/O: 14, Analog Input: 8 (A0-A7, 12-bit ADC)\n- PWM: all digital pins, DAC: A0\n- Flash: 256 KB, SRAM: 32 KB\n- I2C: SDA (A4), SCL (A5)\n- IMPORTANT: 3.3V logic - do NOT connect 5V signals directly\n- Libraries: WiFiNINA, ArduinoBLE, Arduino_LSM6DS3"
+  },
+  {
+    "title": "Arduino Uno R4 WiFi Pinout",
+    "category": "Board Pinout",
+    "content": "Arduino Uno R4 WiFi:\n- Microcontroller: Renesas RA4M1 (Arm Cortex-M4, 48 MHz)\n- Wi-Fi/BLE: ESP32-S3 module\n- Digital I/O: 14 (D0-D13), PWM on all digital pins\n- Analog Input: 6 (A0-A5), 14-bit ADC (0-16383)\n- DAC: A0 (12-bit)\n- Flash: 256 KB, SRAM: 32 KB\n- LED Matrix: 12x8 on-board LED matrix\n- I2C: SDA (A4), SCL (A5)\n- Operating Voltage: 5V (but CAN bus, USB-C)\n- Backward compatible with Uno R3 shields"
+  },
+  {
+    "title": "ESP32 Pinout (Arduino Compatible)",
+    "category": "Board Pinout",
+    "content": "ESP32 DevKit (Arduino-compatible):\n- Microcontroller: Xtensa dual-core 240 MHz, 3.3V logic\n- Wi-Fi: 802.11 b/g/n, Bluetooth: v4.2 BR/EDR + BLE\n- GPIO: 34 (not all exposed), ADC: 18 channels (12-bit)\n- DAC: 2 channels (8-bit), PWM: 16 channels\n- Touch Pins: 10 capacitive touch inputs\n- Flash: 4 MB, SRAM: 520 KB\n- SPI: 3 buses, I2C: 2 buses, UART: 3\n- Hall Effect Sensor, Temperature Sensor built-in\n- Strapping pins (avoid): GPIO 0, 2, 5, 12, 15\n- Input-only pins: GPIO 34, 35, 36, 39\n- IMPORTANT: 3.3V logic, NOT 5V tolerant"
+  },
+  {
+    "title": "Blink LED Pattern",
+    "category": "Cookbook",
+    "content": "Basic LED blink on pin 13:\n```cpp\nvoid setup() {\n  pinMode(13, OUTPUT);\n}\nvoid loop() {\n  digitalWrite(13, HIGH);\n  delay(1000);\n  digitalWrite(13, LOW);\n  delay(1000);\n}\n```\nComponents: 1x LED, 1x 220-ohm resistor. Connect LED anode to pin 13, cathode to resistor, resistor to GND. Built-in LED on pin 13 needs no external components."
+  },
+  {
+    "title": "Fade LED with PWM",
+    "category": "Cookbook",
+    "content": "Fade LED using analogWrite PWM on pin 9:\n```cpp\nint led = 9;\nint brightness = 0;\nint fadeAmount = 5;\nvoid setup() { pinMode(led, OUTPUT); }\nvoid loop() {\n  analogWrite(led, brightness);\n  brightness += fadeAmount;\n  if (brightness <= 0 || brightness >= 255) fadeAmount = -fadeAmount;\n  delay(30);\n}\n```\nMust use PWM pin (3, 5, 6, 9, 10, 11 on Uno). Components: LED + 220-ohm resistor."
+  },
+  {
+    "title": "Button Input with Debounce",
+    "category": "Cookbook",
+    "content": "Read button with software debounce:\n```cpp\nconst int buttonPin = 2;\nconst int ledPin = 13;\nint buttonState = LOW;\nint lastButtonState = LOW;\nunsigned long lastDebounceTime = 0;\nunsigned long debounceDelay = 50;\nvoid setup() {\n  pinMode(buttonPin, INPUT_PULLUP);\n  pinMode(ledPin, OUTPUT);\n}\nvoid loop() {\n  int reading = digitalRead(buttonPin);\n  if (reading != lastButtonState) lastDebounceTime = millis();\n  if ((millis() - lastDebounceTime) > debounceDelay) {\n    if (reading != buttonState) {\n      buttonState = reading;\n      if (buttonState == LOW) digitalWrite(ledPin, !digitalRead(ledPin));\n    }\n  }\n  lastButtonState = reading;\n}\n```\nUse INPUT_PULLUP so button connects pin to GND when pressed."
+  },
+  {
+    "title": "Servo Motor Control",
+    "category": "Cookbook",
+    "content": "Control servo with potentiometer:\n```cpp\n#include <Servo.h>\nServo myservo;\nint potPin = A0;\nvoid setup() { myservo.attach(9); }\nvoid loop() {\n  int val = analogRead(potPin);\n  int angle = map(val, 0, 1023, 0, 180);\n  myservo.write(angle);\n  delay(15);\n}\n```\nServo: signal to pin 9, red to 5V, brown/black to GND. Potentiometer: outer pins to 5V and GND, wiper to A0. Servo draws too much current from Arduino - use external 5V supply for motor."
+  },
+  {
+    "title": "Ultrasonic Distance Sensor (HC-SR04)",
+    "category": "Cookbook",
+    "content": "Measure distance with HC-SR04:\n```cpp\nconst int trigPin = 9;\nconst int echoPin = 10;\nvoid setup() {\n  Serial.begin(9600);\n  pinMode(trigPin, OUTPUT);\n  pinMode(echoPin, INPUT);\n}\nvoid loop() {\n  digitalWrite(trigPin, LOW);\n  delayMicroseconds(2);\n  digitalWrite(trigPin, HIGH);\n  delayMicroseconds(10);\n  digitalWrite(trigPin, LOW);\n  long duration = pulseIn(echoPin, HIGH);\n  float distance = duration * 0.034 / 2;\n  Serial.print(\"Distance: \");\n  Serial.print(distance);\n  Serial.println(\" cm\");\n  delay(100);\n}\n```\nHC-SR04: VCC to 5V, GND to GND, Trig to pin 9, Echo to pin 10. Range: 2-400 cm."
+  },
+  {
+    "title": "I2C LCD Display (16x2)",
+    "category": "Cookbook",
+    "content": "Display text on I2C LCD:\n```cpp\n#include <Wire.h>\n#include <LiquidCrystal_I2C.h>\nLiquidCrystal_I2C lcd(0x27, 16, 2);\nvoid setup() {\n  lcd.init();\n  lcd.backlight();\n  lcd.setCursor(0, 0);\n  lcd.print(\"Hello World!\");\n  lcd.setCursor(0, 1);\n  lcd.print(\"Arduino Copilot\");\n}\nvoid loop() {}\n```\nI2C LCD: VCC to 5V, GND to GND, SDA to A4, SCL to A5 (Uno). Common addresses: 0x27 or 0x3F. Use I2C scanner sketch if unsure."
+  },
+  {
+    "title": "DHT11/DHT22 Temperature Sensor",
+    "category": "Cookbook",
+    "content": "Read temperature and humidity:\n```cpp\n#include <DHT.h>\n#define DHTPIN 2\n#define DHTTYPE DHT11\nDHT dht(DHTPIN, DHTTYPE);\nvoid setup() {\n  Serial.begin(9600);\n  dht.begin();\n}\nvoid loop() {\n  float h = dht.readHumidity();\n  float t = dht.readTemperature();\n  if (isnan(h) || isnan(t)) {\n    Serial.println(\"Failed to read from DHT sensor!\");\n    return;\n  }\n  Serial.print(\"Humidity: \"); Serial.print(h);\n  Serial.print(\"% Temp: \"); Serial.print(t); Serial.println(\"C\");\n  delay(2000);\n}\n```\nDHT11: VCC to 5V, GND to GND, Data to pin 2 with 10K pull-up resistor to VCC. Install DHT library from Library Manager."
+  },
+  {
+    "title": "Non-blocking Blink (millis)",
+    "category": "Cookbook",
+    "content": "Blink without delay using millis():\n```cpp\nconst int ledPin = 13;\nint ledState = LOW;\nunsigned long previousMillis = 0;\nconst long interval = 1000;\nvoid setup() { pinMode(ledPin, OUTPUT); }\nvoid loop() {\n  unsigned long currentMillis = millis();\n  if (currentMillis - previousMillis >= interval) {\n    previousMillis = currentMillis;\n    ledState = (ledState == LOW) ? HIGH : LOW;\n    digitalWrite(ledPin, ledState);\n  }\n  // Other code can run here without being blocked\n}\n```\nPreferred over delay() for multitasking. Allows reading sensors, checking buttons, etc. while blinking."
+  },
+  {
+    "title": "State Machine Pattern",
+    "category": "Cookbook",
+    "content": "Loop state machine for multi-step processes:\n```cpp\nenum State { IDLE, RUNNING, PAUSED, DONE };\nState currentState = IDLE;\nvoid setup() { Serial.begin(9600); }\nvoid loop() {\n  switch (currentState) {\n    case IDLE:\n      // Wait for start condition\n      if (digitalRead(2) == LOW) currentState = RUNNING;\n      break;\n    case RUNNING:\n      // Perform main task\n      // Transition on condition\n      break;\n    case PAUSED:\n      break;\n    case DONE:\n      currentState = IDLE;\n      break;\n  }\n}\n```\nUseful for traffic lights, vending machines, robot behaviors."
+  },
+  {
+    "title": "MQTT IoT Publishing",
+    "category": "Cookbook",
+    "content": "Publish sensor data via MQTT (ESP32/WiFi boards):\n```cpp\n#include <WiFi.h>\n#include <PubSubClient.h>\nconst char* ssid = \"YourWiFi\";\nconst char* password = \"YourPassword\";\nconst char* mqtt_server = \"broker.emqx.io\";\nWiFiClient espClient;\nPubSubClient client(espClient);\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(ssid, password);\n  while (WiFi.status() != WL_CONNECTED) delay(500);\n  client.setServer(mqtt_server, 1883);\n}\nvoid loop() {\n  if (!client.connected()) {\n    client.connect(\"arduinoClient\");\n  }\n  client.loop();\n  float temp = analogRead(A0) * 0.48828;\n  char msg[50];\n  snprintf(msg, 50, \"%.2f\", temp);\n  client.publish(\"arduino/temperature\", msg);\n  delay(5000);\n}\n```\nFree public broker: broker.emqx.io:1883. Install PubSubClient library."
+  },
+  {
+    "title": "ISR (Interrupt Service Routine) Template",
+    "category": "Cookbook",
+    "content": "ISR template for external interrupt:\n```cpp\nvolatile int counter = 0;\nvolatile bool flag = false;\nvoid setup() {\n  Serial.begin(9600);\n  pinMode(2, INPUT_PULLUP);\n  attachInterrupt(digitalPinToInterrupt(2), myISR, FALLING);\n}\nvoid myISR() {\n  counter++;\n  flag = true;\n}\nvoid loop() {\n  if (flag) {\n    noInterrupts();\n    int count = counter;\n    interrupts();\n    Serial.print(\"Count: \");\n    Serial.println(count);\n    flag = false;\n  }\n}\n```\nRules: ISR must be fast, no delay(), no Serial, use volatile for shared variables. Uno interrupt pins: 2 (INT0), 3 (INT1)."
+  },
+  {
+    "title": "Motor Control with L298N",
+    "category": "Cookbook",
+    "content": "Control DC motor with L298N driver:\n```cpp\nconst int IN1 = 7;\nconst int IN2 = 8;\nconst int ENA = 9; // PWM pin for speed\nvoid setup() {\n  pinMode(IN1, OUTPUT);\n  pinMode(IN2, OUTPUT);\n  pinMode(ENA, OUTPUT);\n}\nvoid forward(int speed) {\n  digitalWrite(IN1, HIGH);\n  digitalWrite(IN2, LOW);\n  analogWrite(ENA, speed);\n}\nvoid backward(int speed) {\n  digitalWrite(IN1, LOW);\n  digitalWrite(IN2, HIGH);\n  analogWrite(ENA, speed);\n}\nvoid stopMotor() {\n  digitalWrite(IN1, LOW);\n  digitalWrite(IN2, LOW);\n  analogWrite(ENA, 0);\n}\nvoid loop() {\n  forward(200);\n  delay(2000);\n  stopMotor();\n  delay(500);\n  backward(200);\n  delay(2000);\n  stopMotor();\n  delay(500);\n}\n```\nL298N: ENA to PWM pin 9, IN1 to pin 7, IN2 to pin 8. Power motor from external supply (not Arduino 5V). Common GND between Arduino and L298N."
+  }
+]
